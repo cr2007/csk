@@ -17,8 +17,6 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-22.04
-    env:
-        quartz: ./quartz/bootstrap-cli.mjs
     steps:
       - uses: actions/checkout@v4
         with:
@@ -29,7 +27,7 @@ jobs:
       - name: Install Dependencies
         run: bun i
       - name: Build Quartz
-        run: bunx run ./quartz/bootstrap-cli.mjs build
+        run: bun quartz build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
